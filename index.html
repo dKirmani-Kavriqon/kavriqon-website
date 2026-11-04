@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Kavriqon Technologies — We build it. Then we stay.</title>
   <meta name="description" content="Kavriqon Technologies designs and builds apps and AI tools for growing businesses, then supports them for as long as you run them.">
   <link rel="canonical" href="https://kavriqontechnologies.com/">
@@ -10,111 +10,103 @@
   <meta property="og:title" content="Kavriqon Technologies — We build it. Then we stay.">
   <meta property="og:description" content="Apps and AI for growing businesses, with support from real people who know your project.">
   <meta property="og:url" content="https://kavriqontechnologies.com/">
-  <meta name="theme-color" content="#F8F6F1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#F8F6F1" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0B141D" media="(prefers-color-scheme: dark)">
   <link rel="icon" type="image/png" href="logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="progress" aria-hidden="true"><span></span></div>
+
   <header class="site-header">
     <div class="container nav-wrap">
       <a class="brand" href="#top" aria-label="Kavriqon Technologies home">
         <img src="logo.png" alt="" width="40" height="40">
         <span>Kavriqon<small>Technologies</small></span>
       </a>
-      <button class="menu-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
-      <nav class="nav" aria-label="Main">
+      <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav"><span></span><span></span></button>
+      <nav class="nav" id="nav" aria-label="Main">
         <a href="#services">Services</a>
         <a href="#support">Support</a>
         <a href="#process">How we work</a>
         <a href="#faq">FAQ</a>
-        <a class="btn btn-dark btn-sm" href="#contact">Start a project</a>
+        <a class="btn btn-primary btn-sm" href="#contact">Start a project</a>
       </nav>
     </div>
   </header>
 
-  <main id="top">
+  <main id="main">
     <!-- HERO -->
-    <section class="hero">
+    <section class="hero" id="top">
       <div class="container hero-copy">
-        <p class="badge reveal"><span class="dot"></span> Typically replies within 4 business hours</p>
-        <h1 class="reveal">We build it.<br><em>Then we stay.</em></h1>
-        <p class="lead reveal">Kavriqon designs and builds apps and AI tools for growing businesses, then supports them for as long as you run them.</p>
-        <div class="hero-actions reveal">
-          <a class="btn btn-dark" href="#contact">Start a project <span aria-hidden="true">→</span></a>
-          <a class="btn btn-ghost" href="#support">See our support promise</a>
+        <p class="badge" data-anim="fade"><span class="dot"></span> Typically replies within 4 business hours</p>
+        <h1 class="headline" aria-label="We build it. Then we stay.">
+          <span class="line" aria-hidden="true"><span class="w">We</span> <span class="w">build</span> <span class="w">it.</span></span>
+          <span class="line accent" aria-hidden="true"><span class="w">Then</span> <span class="w">we</span> <span class="w">stay.</span></span>
+        </h1>
+        <p class="lead" data-anim="fade" style="--d:.5s">Kavriqon designs and builds apps and AI tools for growing businesses, then supports them for as long as you run them.</p>
+        <div class="hero-actions" data-anim="fade" style="--d:.65s">
+          <a class="btn btn-primary" href="#contact">Start a project <span aria-hidden="true">→</span></a>
+          <a class="btn btn-secondary" href="#flow">See how support works</a>
         </div>
       </div>
 
       <div class="container">
-        <div class="hero-stage reveal" aria-label="Illustration: an app built by Kavriqon with live support updates around it">
+        <div class="hero-stage" data-anim="rise" style="--d:.3s">
           <div class="arc" aria-hidden="true"></div>
 
-          <div class="phone" aria-hidden="true">
+          <div class="phone" data-depth="0.4" aria-hidden="true">
             <div class="phone-notch"></div>
             <div class="app">
               <div class="app-top"><span class="app-avatar">AI</span><div><b>Clinic Assistant</b><small>Online · answers in seconds</small></div></div>
-              <div class="msg msg-in">Hi! Can I book a check-up for Saturday morning?</div>
-              <div class="msg msg-out">Of course. Dr. Mir has 10:30 and 11:15 free. Which works for you?</div>
-              <div class="msg msg-in">10:30 please</div>
-              <div class="msg msg-out">Booked ✓ You'll get a reminder on Friday evening.</div>
+              <div class="chat" id="hero-chat"></div>
               <div class="app-input"><span>Type a message…</span><i></i></div>
             </div>
           </div>
 
-          <div class="float card-support">
-            <span class="dot"></span>
-            <div><b>Support reply sent</b><small>Answered in 12 min by your support lead</small></div>
-          </div>
-          <div class="float card-ai">
-            <small>AI assistant this week</small>
-            <b>340</b>
-            <span>customer questions answered</span>
-          </div>
-          <div class="float card-uptime">
-            <div class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-            <div><b>99.9%</b><small>Uptime this month</small></div>
-          </div>
-          <div class="float card-update">
-            <span class="tick">✓</span>
-            <div><b>Update shipped</b><small>v2.4 · today, 9:40 am</small></div>
-          </div>
+          <div class="float card-support" data-depth="1" style="--i:0"><span class="dot"></span><div><b>Support reply sent</b><small>Answered in 12 min by your lead</small></div></div>
+          <div class="float card-ai" data-depth="1.4" style="--i:1"><small>AI assistant this week</small><b data-count="340">340</b><span>customer questions answered</span></div>
+          <div class="float card-uptime" data-depth="1.2" style="--i:2"><div class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div><b>99.9%</b><small>Uptime this month</small></div></div>
+          <div class="float card-update" data-depth="0.8" style="--i:3"><span class="tick">✓</span><div><b>Update shipped</b><small>v2.4 · today, 9:40 am</small></div></div>
         </div>
-        <p class="stage-note">Illustrative example of a client app and its support activity.</p>
+        <p class="stage-note">Illustration of a client app and its support activity.</p>
       </div>
 
-      <div class="container stack reveal">
-        <span>Built with</span>
-        <ul>
-          <li>React</li><li>Flutter</li><li>Node.js</li><li>Python</li><li>OpenAI</li><li>Claude</li><li>Supabase</li><li>Cloudflare</li>
-        </ul>
+      <div class="marquee" aria-label="Technologies we build with">
+        <div class="marquee-track">
+          <ul><li>React</li><li>Flutter</li><li>Node.js</li><li>Python</li><li>OpenAI</li><li>Claude</li><li>Supabase</li><li>Cloudflare</li></ul>
+          <ul aria-hidden="true"><li>React</li><li>Flutter</li><li>Node.js</li><li>Python</li><li>OpenAI</li><li>Claude</li><li>Supabase</li><li>Cloudflare</li></ul>
+        </div>
       </div>
     </section>
 
     <!-- SERVICES -->
     <section class="section" id="services">
       <div class="container">
-        <div class="section-head reveal">
+        <div class="section-head" data-anim="fade">
           <p class="kicker">What we do</p>
           <h2>Three things, <em>done properly.</em></h2>
           <p>Start with one. Most clients end up with all three, because the app, the AI and the care work best together.</p>
         </div>
         <div class="services">
-          <article class="service reveal">
+          <article class="service spot" data-anim="rise">
             <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="6" y="2.5" width="12" height="19" rx="3"/><path d="M10 18.5h4"/></svg></div>
             <h3>Apps</h3>
             <p>Web and mobile apps, customer portals and internal tools that make your business easier to run and easier to buy from.</p>
             <ul><li>Web and mobile apps</li><li>Customer and staff portals</li><li>Dashboards and internal tools</li></ul>
           </article>
-          <article class="service reveal">
+          <article class="service spot" data-anim="rise" style="--d:.08s">
             <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l1.8 4.7L18.5 9.5l-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8z"/><path d="M18.5 15.5l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8z"/></svg></div>
             <h3>AI for business</h3>
             <p>Assistants and automations that take repetitive work off your team, inside the tools you already use.</p>
             <ul><li>Customer and booking assistants</li><li>Document and data automation</li><li>AI inside your existing systems</li></ul>
           </article>
-          <article class="service service-accent reveal">
+          <article class="service service-accent spot" data-anim="rise" style="--d:.16s">
             <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.4-7.5-10.2A4.3 4.3 0 0 1 12 8a4.3 4.3 0 0 1 7.5 2.8C19.5 16.6 12 21 12 21z"/></svg></div>
             <h3>Care and support</h3>
             <p>Monitoring, fixes, updates and testing after launch, with one person who knows your project inside out.</p>
@@ -124,36 +116,67 @@
       </div>
     </section>
 
-    <!-- SUPPORT -->
+    <!-- SUPPORT PROMISE -->
     <section class="section support" id="support">
       <div class="container support-grid">
-        <div class="reveal">
+        <div data-anim="fade">
           <p class="kicker kicker-light">Our support promise</p>
           <h2>Most agencies launch and leave. <em>We don't.</em></h2>
           <p class="support-lead">Software is never finished. Things break, customers change, and your business grows. Every project we build comes with people who stay on it.</p>
-          <a class="btn btn-light" href="#contact">Talk to us <span aria-hidden="true">→</span></a>
+          <a class="btn btn-light" href="#flow">Watch a request play out <span aria-hidden="true">↓</span></a>
         </div>
         <ul class="promises">
-          <li class="reveal"><b>4 hrs</b><div><h3>A real reply, fast</h3><p>A response from a person within 4 business hours, not an auto-reply.</p></div></li>
-          <li class="reveal"><b>1</b><div><h3>One named contact</h3><p>The same person who knows your project, every time you get in touch.</p></div></li>
-          <li class="reveal"><b>24/7</b><div><h3>Monitoring included</h3><p>We watch your app and usually fix problems before your customers notice.</p></div></li>
-          <li class="reveal"><b>0</b><div><h3>Ticket bots</h3><p>No queues, no chatbot gatekeeping. WhatsApp, email or a call, whichever you prefer.</p></div></li>
+          <li data-anim="rise"><b><span data-count="4">4</span> hrs</b><div><h3>A real reply, fast</h3><p>A response from a person within 4 business hours, not an auto-reply.</p></div></li>
+          <li data-anim="rise" style="--d:.08s"><b><span data-count="1">1</span></b><div><h3>One named contact</h3><p>The same person who knows your project, every time you get in touch.</p></div></li>
+          <li data-anim="rise" style="--d:.16s"><b>24/7</b><div><h3>Monitoring included</h3><p>We watch your app and usually fix problems before your customers notice.</p></div></li>
+          <li data-anim="rise" style="--d:.24s"><b><span data-count="0">0</span></b><div><h3>Ticket bots</h3><p>No queues, no chatbot gatekeeping. WhatsApp, email or a call, whichever you prefer.</p></div></li>
         </ul>
+      </div>
+    </section>
+
+    <!-- SUPPORT FLOW (scroll story) -->
+    <section class="section flow" id="flow" aria-labelledby="flow-title">
+      <div class="container">
+        <div class="section-head" data-anim="fade">
+          <p class="kicker">When something breaks</p>
+          <h2 id="flow-title">From <em>“it's broken”</em> to fixed, before lunch.</h2>
+          <p>Here's what a typical support request looks like with us. Scroll through it.</p>
+        </div>
+        <div class="flow-grid">
+          <div class="flow-visual" aria-hidden="true">
+            <div class="device">
+              <div class="device-bar"><span></span><span></span><span></span><b>Support · Clinic app</b></div>
+              <div class="device-body">
+                <div class="timeline-rail"><span class="rail-fill"></span></div>
+                <div class="event" data-step="0"><i class="ev-icon ev-warn">!</i><div><small>9:02 am · You</small><b>“Patients can't see Saturday slots.”</b><p>Sent on WhatsApp</p></div></div>
+                <div class="event" data-step="1"><i class="ev-icon ev-person">A</i><div><small>9:14 am · Your support lead</small><b>“On it. Found the cause: a calendar sync failed overnight.”</b><p>Replied in 12 minutes</p></div></div>
+                <div class="event" data-step="2"><i class="ev-icon ev-test">✓</i><div><small>10:05 am · Testing</small><b>Fix tested on staging</b><div class="checks"><span>Booking</span><span>Reminders</span><span>Sync</span></div></div></div>
+                <div class="event" data-step="3"><i class="ev-icon ev-done">★</i><div><small>10:40 am · Shipped</small><b>Saturday slots are back. 18 bookings made since.</b><p>You get a short note on what happened and how we stop it recurring.</p></div></div>
+              </div>
+            </div>
+          </div>
+          <ol class="flow-steps">
+            <li data-step="0"><span>01</span><h3>You tell us, however you like</h3><p>WhatsApp, email or a call. No portal to log into and no ticket form to fill in.</p></li>
+            <li data-step="1"><span>02</span><h3>A person who knows your app replies</h3><p>Your named lead already knows how your app is built, so there's no explaining from scratch.</p></li>
+            <li data-step="2"><span>03</span><h3>We fix it and test it properly</h3><p>Every fix is tested before it ships, so one problem doesn't turn into two.</p></li>
+            <li data-step="3"><span>04</span><h3>It ships, and you hear what happened</h3><p>You get a plain-language note on the cause and what we changed to stop it recurring.</p></li>
+          </ol>
+        </div>
       </div>
     </section>
 
     <!-- PROCESS -->
     <section class="section" id="process">
       <div class="container">
-        <div class="section-head reveal">
+        <div class="section-head" data-anim="fade">
           <p class="kicker">How we work</p>
           <h2>Four steps. <em>The last one never ends.</em></h2>
         </div>
         <ol class="process">
-          <li class="reveal"><span>01</span><h3>Discover</h3><p>We learn how your business actually works and find the problem worth solving.</p></li>
-          <li class="reveal"><span>02</span><h3>Design</h3><p>You see and click through the solution before we build it, so there are no surprises.</p></li>
-          <li class="reveal"><span>03</span><h3>Build</h3><p>We build in short cycles and test as we go, so you see progress every week.</p></li>
-          <li class="reveal stay"><span>04</span><h3>Stay</h3><p>We launch, then we look after it: monitoring, fixes, improvements and new ideas.</p></li>
+          <li data-anim="rise"><span>01</span><h3>Discover</h3><p>We learn how your business actually works and find the problem worth solving.</p></li>
+          <li data-anim="rise" style="--d:.1s"><span>02</span><h3>Design</h3><p>You see and click through the solution before we build it, so there are no surprises.</p></li>
+          <li data-anim="rise" style="--d:.2s"><span>03</span><h3>Build</h3><p>We build in short cycles and test as we go, so you see progress every week.</p></li>
+          <li data-anim="rise" style="--d:.3s" class="stay"><span>04</span><h3>Stay</h3><p>We launch, then we look after it: monitoring, fixes, improvements and new ideas.</p></li>
         </ol>
       </div>
     </section>
@@ -161,25 +184,25 @@
     <!-- EXAMPLES -->
     <section class="section examples-wrap">
       <div class="container">
-        <div class="section-head reveal">
+        <div class="section-head" data-anim="fade">
           <p class="kicker">What we can build for you</p>
           <h2>Ideas we love <em>to make real.</em></h2>
           <p>Examples of the kind of projects we take on. Have something different in mind? Even better.</p>
         </div>
         <div class="examples">
-          <article class="example reveal">
+          <article class="example spot" data-anim="rise">
             <div class="example-art art-a" aria-hidden="true"><span>Booking</span><span>Reminders</span><span>AI receptionist</span></div>
             <p class="tag">Healthcare · App + AI</p>
             <h3>A clinic app that books patients on its own</h3>
             <p>Online booking, automatic reminders and an assistant that answers common questions at any hour.</p>
           </article>
-          <article class="example reveal">
+          <article class="example spot" data-anim="rise" style="--d:.08s">
             <div class="example-art art-b" aria-hidden="true"><span>Orders</span><span>Catalogue</span><span>WhatsApp</span></div>
             <p class="tag">Retail · AI</p>
             <h3>A WhatsApp assistant that takes orders</h3>
             <p>Customers browse, ask and order in a chat they already use, and every order lands in your system.</p>
           </article>
-          <article class="example reveal">
+          <article class="example spot" data-anim="rise" style="--d:.16s">
             <div class="example-art art-c" aria-hidden="true"><span>Invoices</span><span>Approvals</span><span>Reports</span></div>
             <p class="tag">Operations · App + AI</p>
             <h3>An office that reads its own paperwork</h3>
@@ -192,53 +215,86 @@
     <!-- FAQ -->
     <section class="section" id="faq">
       <div class="container faq-grid">
-        <div class="section-head reveal">
+        <div class="section-head" data-anim="fade">
           <p class="kicker">Questions</p>
           <h2>Things people <em>usually ask.</em></h2>
           <p>Still curious? <a href="#contact">Ask us directly.</a></p>
         </div>
-        <div class="faq reveal">
-          <details><summary>How much does a project cost?</summary><p>It depends on what you need, so we start with a free conversation and a clear written estimate. No surprises after you agree.</p></details>
-          <details><summary>How long does it take?</summary><p>Small projects take a few weeks; larger apps take a few months. You'll see working progress every week either way.</p></details>
-          <details><summary>Who owns the code?</summary><p>You do. Everything we build for you is yours, and we document it properly.</p></details>
-          <details><summary>What happens after launch?</summary><p>That's where we're different. We monitor, fix, update and improve your product for as long as you want us to.</p></details>
-          <details><summary>Do I need to understand AI to work with you?</summary><p>Not at all. Tell us what's slowing your team down, and we'll explain in plain language where AI can help and where it can't.</p></details>
+        <div class="faq" data-anim="fade">
+          <details><summary>How much does a project cost?</summary><div class="faq-body"><p>It depends on what you need, so we start with a free conversation and a clear written estimate. No surprises after you agree.</p></div></details>
+          <details><summary>How long does it take?</summary><div class="faq-body"><p>Small projects take a few weeks; larger apps take a few months. You'll see working progress every week either way.</p></div></details>
+          <details><summary>Who owns the code?</summary><div class="faq-body"><p>You do. Everything we build for you is yours, and we document it properly.</p></div></details>
+          <details><summary>What happens after launch?</summary><div class="faq-body"><p>That's where we're different. We monitor, fix, update and improve your product for as long as you want us to.</p></div></details>
+          <details><summary>Do I need to understand AI to work with you?</summary><div class="faq-body"><p>Not at all. Tell us what's slowing your team down, and we'll explain in plain language where AI can help and where it can't.</p></div></details>
         </div>
       </div>
     </section>
 
-    <!-- CONTACT -->
+    <!-- CONTACT (step-by-step flow) -->
     <section class="section contact" id="contact">
       <div class="container contact-grid">
-        <div class="reveal">
+        <div data-anim="fade">
           <p class="kicker">Start a project</p>
           <h2>Tell us what's <em>slowing you down.</em></h2>
-          <p class="contact-lead">A few lines is enough. A real person from our team will reply, usually within 4 business hours.</p>
+          <p class="contact-lead">Three quick steps. A real person from our team will reply, usually within 4 business hours.</p>
           <ul class="contact-points">
             <li><span class="dot"></span> Free first conversation</li>
             <li><span class="dot"></span> A clear estimate, in writing</li>
             <li><span class="dot"></span> Based in India, working worldwide</li>
           </ul>
         </div>
-        <form id="enquiry-form" class="form reveal" novalidate>
+
+        <form id="enquiry-form" class="form" data-anim="rise" novalidate>
           <input type="text" name="_honey" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
-          <div class="form-row">
-            <label>Your name<input name="name" type="text" required maxlength="100" autocomplete="name" placeholder="Full name"></label>
-            <label>Email<input name="email" type="email" required maxlength="160" autocomplete="email" placeholder="you@company.com"></label>
+          <div class="steps-head">
+            <ol class="stepper" aria-label="Enquiry steps">
+              <li class="active" data-for="0"><span>1</span>The need</li>
+              <li data-for="1"><span>2</span>Your project</li>
+              <li data-for="2"><span>3</span>About you</li>
+            </ol>
+            <div class="step-bar"><span id="step-fill"></span></div>
           </div>
-          <label>Phone or WhatsApp <small>optional</small><input name="phone" type="tel" maxlength="30" autocomplete="tel" placeholder="+91 98765 43210"></label>
-          <fieldset>
-            <legend>What do you need?</legend>
-            <div class="chips">
-              <label class="chip"><input type="radio" name="service" value="App development" required><span>An app</span></label>
-              <label class="chip"><input type="radio" name="service" value="AI for business"><span>AI for my business</span></label>
-              <label class="chip"><input type="radio" name="service" value="Care and support"><span>Support for existing software</span></label>
-              <label class="chip"><input type="radio" name="service" value="Not sure yet — let's discuss"><span>Not sure yet</span></label>
+
+          <div class="step-viewport">
+            <fieldset class="step active" data-step="0">
+              <legend>What do you need help with?</legend>
+              <div class="choice-grid">
+                <label class="choice"><input type="radio" name="service" value="App development" required><span><b>An app</b><small>Web, mobile or internal tool</small></span></label>
+                <label class="choice"><input type="radio" name="service" value="AI for business"><span><b>AI for my business</b><small>Assistants and automation</small></span></label>
+                <label class="choice"><input type="radio" name="service" value="Care and support"><span><b>Support</b><small>For software I already have</small></span></label>
+                <label class="choice"><input type="radio" name="service" value="Not sure yet — let's discuss"><span><b>Not sure yet</b><small>Let's talk it through</small></span></label>
+              </div>
+            </fieldset>
+
+            <fieldset class="step" data-step="1" hidden>
+              <legend>Tell us a little about it</legend>
+              <label>What's the challenge or idea?<textarea name="message" rows="5" required minlength="10" maxlength="3000" placeholder="For example: we take bookings by phone and miss calls when we're busy."></textarea></label>
+              <p class="hint"><span id="msg-count">0</span> characters · at least 10</p>
+            </fieldset>
+
+            <fieldset class="step" data-step="2" hidden>
+              <legend>How can we reach you?</legend>
+              <div class="form-row">
+                <label>Your name<input name="name" type="text" required maxlength="100" autocomplete="name" placeholder="Full name"></label>
+                <label>Email<input name="email" type="email" required maxlength="160" autocomplete="email" placeholder="you@company.com"></label>
+              </div>
+              <label>Phone or WhatsApp <small>optional</small><input name="phone" type="tel" maxlength="30" autocomplete="tel" placeholder="+91 98765 43210"></label>
+            </fieldset>
+
+            <div class="step step-done" data-step="3" hidden tabindex="-1">
+              <div class="done-mark" aria-hidden="true"><svg viewBox="0 0 52 52"><circle cx="26" cy="26" r="24"/><path d="M15 27l7 7 15-16"/></svg></div>
+              <h3>Thank you, it's with our team.</h3>
+              <p>A real person will reply soon, usually within 4 business hours.</p>
             </div>
-          </fieldset>
-          <label>About your project<textarea name="message" rows="4" required minlength="10" maxlength="3000" placeholder="What's the challenge or idea?"></textarea></label>
-          <button class="btn btn-dark btn-block" type="submit"><span class="submit-text">Send enquiry</span> <span aria-hidden="true">→</span></button>
+          </div>
+
           <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+
+          <div class="step-actions">
+            <button type="button" class="btn btn-secondary" id="step-back" hidden>Back</button>
+            <button type="button" class="btn btn-primary" id="step-next">Continue <span aria-hidden="true">→</span></button>
+            <button type="submit" class="btn btn-primary" id="step-send" hidden><span class="submit-text">Send enquiry</span> <span aria-hidden="true">→</span></button>
+          </div>
           <p class="form-legal">By sending this form, you agree that we may contact you about your enquiry.</p>
         </form>
       </div>
