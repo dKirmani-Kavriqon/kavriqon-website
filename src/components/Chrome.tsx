@@ -1,5 +1,6 @@
 import {useEffect, useRef, useState, type MouseEvent} from 'react';
 import {brand, nav} from '../content';
+import {legalNav} from '../legal';
 import {url} from '../lib/paths';
 import {onFrame, scrollToHash} from '../lib/scroll';
 
@@ -24,7 +25,9 @@ export function Mark({className = ''}: {className?: string}) {
   );
 }
 
-export function Header({page}: {page: 'home' | 'founders'}) {
+export type Page = 'home' | 'founders' | 'doc';
+
+export function Header({page}: {page: Page}) {
   const onHome = page === 'home';
   const [open, setOpen] = useState(false);
   const barRef = useRef<HTMLDivElement>(null);
@@ -119,7 +122,7 @@ export function Header({page}: {page: 'home' | 'founders'}) {
   );
 }
 
-export function Footer({page}: {page: 'home' | 'founders'}) {
+export function Footer({page}: {page: Page}) {
   const onHome = page === 'home';
   return (
     <footer className="border-t border-line bg-void px-4 py-10 sm:px-6 md:px-[6vw]">
@@ -141,11 +144,17 @@ export function Footer({page}: {page: 'home' | 'founders'}) {
           </a>
         </nav>
       </div>
-      <div className="mt-8 flex flex-col gap-2 border-t border-line pt-6 font-mono text-label text-subtle uppercase md:flex-row md:justify-between">
-        <span>
-          © {new Date().getFullYear()} {brand.name}
+      <div className="mt-8 flex flex-col gap-2 border-t border-line pt-6 font-mono text-label text-subtle uppercase md:flex-row md:items-center md:justify-between">
+        <span className="py-3 md:py-0">
+          © {new Date().getFullYear()} {brand.name} · Kashmir, India
         </span>
-        <span>Kashmir, India · Working worldwide</span>
+        <nav aria-label="Policies and help" className="-mx-3 flex flex-wrap">
+          {legalNav.map((l) => (
+            <a key={l.href} href={url(l.href)} className="inline-flex min-h-11 items-center px-3 hover:text-white">
+              {l.label}
+            </a>
+          ))}
+        </nav>
       </div>
     </footer>
   );
