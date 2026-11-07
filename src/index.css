@@ -1,0 +1,190 @@
+@import "tailwindcss";
+
+/* Lenis' own stylesheet (its package exports don't expose the .css path). */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis:not(.lenis-autoToggle).lenis-stopped {
+  overflow: clip;
+}
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+/* ------------------------------------------------------------------
+   Type system
+   Display: Michroma — wide, engineered caps, like the KAVRIQON wordmark.
+            Used sparingly and always tracked out.
+   Text:    Manrope.
+   Mono:    IBM Plex Mono for telemetry: coordinates, clocks, labels.
+
+   Colour: one dark appearance on purpose (HIG dark-mode.md › "In rare
+   cases, consider using only a dark appearance" — this is an immersive,
+   image-led page). Every text colour below is a solid token checked
+   against --color-void, never an opacity, so contrast is predictable:
+     regolith 13.8:1 · muted 7.7:1 · subtle 5.4:1 · bronze 11.0:1
+     signal 9.4:1 · live 9.8:1  (small text needs 4.5:1, accessibility.md)
+   ------------------------------------------------------------------ */
+@theme {
+  --font-display: "Michroma", "Eurostile", "Arial Black", sans-serif;
+  --font-sans: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+
+  --color-void: #05080d;
+  --color-void-2: #0c131d;
+  --color-void-3: #131c29;
+  --color-line: #1f2a38;
+  --color-regolith: #d3d6dc;
+  --color-muted: #9ba1ab;
+  --color-subtle: #7f8590;
+  --color-bronze: #e0b98c;
+  --color-bronze-deep: #b8875a;
+  --color-signal: #6fb6ff;
+  --color-live: #58c9a0;
+  --color-snow: #eef1f5;
+
+  --text-hero: clamp(2.25rem, 8.6vw, 9rem);
+  --text-hero--line-height: 1;
+  --text-hero--letter-spacing: 0.24em;
+
+  --text-display: clamp(1.75rem, 4vw, 3.75rem);
+  --text-display--line-height: 1.12;
+  --text-display--letter-spacing: 0.02em;
+
+  --text-lead: clamp(1.125rem, 1.6vw, 1.5rem);
+  --text-lead--line-height: 1.45;
+  --text-lead--letter-spacing: -0.01em;
+
+  /* Body never drops under 16px (typography.md › legible sizes). */
+  --text-body: clamp(1rem, 1.05vw, 1.0625rem);
+  --text-body--line-height: 1.65;
+  --text-body--letter-spacing: -0.005em;
+
+  /* Labels are 12px minimum, uppercase mono, tracked. */
+  --text-label: 0.75rem;
+  --text-label--line-height: 1.35;
+  --text-label--letter-spacing: 0.16em;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    background: var(--color-void);
+  }
+  body {
+    margin: 0;
+    background: var(--color-void);
+    color: var(--color-regolith);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: clip;
+  }
+  ::selection {
+    background: var(--color-bronze);
+    color: var(--color-void);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-bronze);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+}
+
+@layer utilities {
+  .h-screen-s {
+    height: 100svh;
+  }
+
+  /* HUD corner brackets. */
+  .brackets {
+    background:
+      linear-gradient(currentColor, currentColor) top left / 14px 1px,
+      linear-gradient(currentColor, currentColor) top left / 1px 14px,
+      linear-gradient(currentColor, currentColor) top right / 14px 1px,
+      linear-gradient(currentColor, currentColor) top right / 1px 14px,
+      linear-gradient(currentColor, currentColor) bottom left / 14px 1px,
+      linear-gradient(currentColor, currentColor) bottom left / 1px 14px,
+      linear-gradient(currentColor, currentColor) bottom right / 14px 1px,
+      linear-gradient(currentColor, currentColor) bottom right / 1px 14px;
+    background-repeat: no-repeat;
+  }
+
+  /* The one glass surface: the floating header, once content scrolls under it
+     (liquid-glass.md › functional layer only). */
+  .glass {
+    background: rgb(5 8 13 / 0.62);
+    -webkit-backdrop-filter: saturate(160%) blur(18px);
+    backdrop-filter: saturate(160%) blur(18px);
+  }
+
+  [data-reveal] {
+    opacity: 0;
+    transform: translate3d(0, 24px, 0);
+    transition:
+      opacity 1s cubic-bezier(0.2, 0.7, 0.1, 1),
+      transform 1s cubic-bezier(0.2, 0.7, 0.1, 1);
+  }
+  [data-reveal].is-in {
+    opacity: 1;
+    transform: none;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    [data-reveal] {
+      transform: none;
+    }
+  }
+}
+
+/* Reduce Transparency: glass becomes a solid bar. */
+@media (prefers-reduced-transparency: reduce) {
+  .glass {
+    background: var(--color-void);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
+
+/* Increase Contrast: secondary text steps up a tone. */
+@media (prefers-contrast: more) {
+  :root {
+    --color-muted: #c3c7ce;
+    --color-subtle: #a9aeb7;
+    --color-line: #3a4656;
+  }
+}
+
+@keyframes leg-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 12px, 0);
+  }
+}
+
+/* Data flowing along the automation vignette's wires. */
+@keyframes flow {
+  to {
+    stroke-dashoffset: -40;
+  }
+}
+@keyframes orbit {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .motion-loop {
+    animation: none !important;
+  }
+}
