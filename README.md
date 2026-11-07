@@ -10,6 +10,7 @@ npm run dev      # http://localhost:3006
 npm run lint     # type check
 npm run build    # outputs dist/
 npm run preview  # serve the built site
+npm run build:preview  # dist-preview/: relative links, works from any folder (for sharing a preview)
 ```
 
 ## Deploy

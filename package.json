@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite --port=3006 --host=0.0.0.0",
     "build": "vite build",
+    "build:preview": "VITE_PREVIEW=1 vite build --base=./ --outDir dist-preview",
     "preview": "vite preview --port=3006",
     "lint": "tsc --noEmit"
   },

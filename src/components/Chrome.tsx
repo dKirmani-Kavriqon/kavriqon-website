@@ -1,9 +1,10 @@
 import {useEffect, useRef, useState, type MouseEvent} from 'react';
 import {brand, nav} from '../content';
+import {url} from '../lib/paths';
 import {onFrame, scrollToHash} from '../lib/scroll';
 
 /** On the home page "#services" scrolls in place; elsewhere it becomes "/#services". */
-const resolve = (href: string, onHome: boolean) => (href.startsWith('#') && !onHome ? `/${href}` : href);
+const resolve = (href: string, onHome: boolean) => url(href.startsWith('#') && !onHome ? `/${href}` : href);
 
 function go(e: MouseEvent<HTMLAnchorElement>, then?: () => void) {
   const hash = e.currentTarget.getAttribute('href');
@@ -52,7 +53,7 @@ export function Header({page}: {page: 'home' | 'founders'}) {
       <div ref={barRef} className="border-b border-transparent transition-[background-color,border-color] duration-300">
         <div className="flex h-16 items-center justify-between px-4 sm:px-6 md:h-[4.5rem] md:px-[3vw]">
           <a
-            href={onHome ? '#top' : '/'}
+            href={onHome ? '#top' : url('/')}
             onClick={(e) => onHome && go(e)}
             className="flex min-h-11 items-center gap-3"
             aria-label={`${brand.name} — home`}
@@ -129,13 +130,13 @@ export function Footer({page}: {page: 'home' | 'founders'}) {
         </span>
         <p className="font-display text-[0.8125rem] tracking-[0.08em] text-muted">{brand.tagline}</p>
         <nav aria-label="Footer" className="-mx-3 flex flex-wrap font-mono text-label uppercase">
-          <a href="/founders/" className="inline-flex min-h-11 items-center px-3 text-muted hover:text-white">
+          <a href={url('/founders/')} className="inline-flex min-h-11 items-center px-3 text-muted hover:text-white">
             Founders
           </a>
           <a href={brand.linkedin} target="_blank" rel="noopener" className="inline-flex min-h-11 items-center px-3 text-muted hover:text-white">
             LinkedIn ↗
           </a>
-          <a href={onHome ? '#top' : '/'} onClick={(e) => onHome && go(e)} className="inline-flex min-h-11 items-center px-3 text-muted hover:text-white">
+          <a href={onHome ? '#top' : url('/')} onClick={(e) => onHome && go(e)} className="inline-flex min-h-11 items-center px-3 text-muted hover:text-white">
             {onHome ? 'Back to top ↑' : 'Home'}
           </a>
         </nav>

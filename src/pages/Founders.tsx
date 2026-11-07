@@ -5,6 +5,7 @@ import {useReducedMotion} from '../hooks/useReducedMotion';
 import {useReveals} from '../hooks/useReveals';
 import {stars} from '../lib/terrain';
 import {clamp} from '../lib/math';
+import {srcSet, url} from '../lib/paths';
 import {onFrame, startScroll} from '../lib/scroll';
 
 /**
@@ -121,8 +122,8 @@ function Portrait({p, i, reduced}: {p: Founder; i: number; reduced: boolean}) {
       <div className="absolute inset-[14%] overflow-hidden rounded-full bg-void-2 ring-1 ring-line">
         {p.photo ? (
           <img
-            src={p.photo.src}
-            srcSet={p.photo.srcSet}
+            src={url(p.photo.src)}
+            srcSet={srcSet(p.photo.srcSet)}
             sizes="(min-width: 768px) 20rem, 72vw"
             width={1024}
             height={1024}
@@ -191,7 +192,7 @@ export default function Founders() {
             <h2 id="founders-cta" className="mx-auto max-w-[18ch] font-display text-display text-white">
               {founders.cta.heading}
             </h2>
-            <a href="/#contact" className="mt-10 inline-flex min-h-13 items-center gap-2 rounded-full bg-white px-8 font-mono text-label text-void uppercase transition-colors hover:bg-bronze">
+            <a href={url('/#contact')} className="mt-10 inline-flex min-h-13 items-center gap-2 rounded-full bg-white px-8 font-mono text-label text-void uppercase transition-colors hover:bg-bronze">
               {founders.cta.button} <span aria-hidden="true">→</span>
             </a>
           </div>
