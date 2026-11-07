@@ -1,0 +1,17 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  // The existing Worker that serves kavriqontechnologies.com.
+  "name": "kavriqon-technologies",
+  "compatibility_date": "2026-11-01",
+  // `wrangler deploy` (and Cloudflare's Git builds) run the Vite build first…
+  "build": {
+    "command": "npm run build"
+  },
+  // …then upload the built site. No Worker script: Cloudflare serves the files.
+  "assets": {
+    "directory": "./dist",
+    // /founders/ → dist/founders/index.html
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  }
+}

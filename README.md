@@ -13,14 +13,24 @@ npm run preview  # serve the built site
 npm run build:preview  # dist-preview/: relative links, works from any folder (for sharing a preview)
 ```
 
-## Deploy
+## Deploy (Cloudflare)
 
-The site is now a build, so deploy the **`dist/` folder** (not the repo root) to the Cloudflare Worker `kavriqon-technologies`. With Wrangler that means pointing the static assets directory at `dist`, for example in `wrangler.toml`:
+`wrangler.jsonc` is set up for the existing Worker, `kavriqon-technologies`. Wrangler runs `npm run build` and then uploads `dist/` as static files. There is no Worker script; Cloudflare serves the files directly.
 
-```toml
-[assets]
-directory = "./dist"
+**From your computer**
+
+```bash
+npx wrangler login   # once
+npm run deploy       # builds, then deploys to kavriqon-technologies
 ```
+
+**From Git (Cloudflare dashboard → Workers & Pages → kavriqon-technologies → Settings → Build)**
+
+- Build command: `npm run build` (or leave it empty: the deploy step builds anyway)
+- Deploy command: `npx wrangler deploy`
+- Root directory: `/`
+
+Routing: `/founders/` serves `founders/index.html`, `/founders` redirects to `/founders/`, and unknown paths get `404.html`. `npm run cf:dev` runs the same setup locally.
 
 ## Enquiry form
 
