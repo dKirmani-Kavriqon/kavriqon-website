@@ -3,6 +3,7 @@ import {brand, enquiry, services} from '../content';
 import {useReveals} from '../hooks/useReveals';
 import {useStudioClock} from '../hooks/useStudioClock';
 import {sendEnquiry} from '../lib/enquiry';
+import {url} from '../lib/paths';
 
 type Status = 'idle' | 'invalid' | 'sending' | 'sent' | 'error';
 
@@ -152,7 +153,13 @@ export function Enquiry() {
               </>
             )}
           </p>
-          <p className="text-[0.8125rem] text-subtle">By sending this form, you agree that we may contact you about your enquiry.</p>
+          <p className="text-[0.8125rem] text-subtle">
+            By sending this form, you agree that we may contact you about your enquiry. See our{' '}
+            <a href={url('/privacy/')} className="text-muted underline underline-offset-4 hover:text-white">
+              Privacy Policy
+            </a>
+            .
+          </p>
         </form>
       </div>
     </section>
